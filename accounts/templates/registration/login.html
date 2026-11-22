@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% block title %}
+вход на сайт
+{% endblock title %}
+{% block content %}
+<form method="POST" class="login_form">
+    {% csrf_token %}
+<h2>вход на сайт</h2>
+{% if form.errors %}
+<p class="error">* Пожалуйста, введите правильное имя и пароль. Оба поля могут быть чувствительны к регистеру.</p>
+{% endif %}
+<div>
+    <label for="id_username">Ваш логин:</label>
+    {{ form.username }}
+</div>
+<div>
+    <label for="id_password">Ваш пароль:</label>
+    {{ form.password }}
+</div>
+<input type="submit" value="Войти" class="button">
+<a href="{% url 'password_reset' %}" class="button">Забыли пароль?</a>
+</form>
+{% endblock content %}
